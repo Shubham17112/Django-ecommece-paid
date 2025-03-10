@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Your Orders</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Status</th>
+            <th>Shipping Address</th>
+            <th>Billing Address</th>
+            <th>Payment</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>
+                {% if order.received %}
+                    ✅ Received
+                {% elif order.being_delivered %}
+                    🚚 Out for Delivery
+                {% elif order.ordered %}
+                    📦 Order Placed
+                {% else %}
+                    ⏳ Processing
+                {% endif %}
+            </td>
+            <td>{{ order.shipping_address }}</td>
+            <td>{{ order.billing_address }}</td>
+            <td>{{ order.payment }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No orders found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
