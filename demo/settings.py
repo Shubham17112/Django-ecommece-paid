@@ -118,6 +118,3 @@ STRIPE_SECRET_KEY = 'sk_test_tn0CTDaIJHUJyAqhsf39cfsC00LNjsqDnb'
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 ALLOWED_HOSTS = ['beliefpeace.com', 'www.beliefpeace.com', '89.116.20.188']
 
-import os
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
