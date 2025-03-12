@@ -2,7 +2,7 @@ import os
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
-DEBUG = False
+DEBUG = True
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj'
 ALLOWED_HOSTS = []
@@ -21,7 +21,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'crispy_forms',
     'django_countries',
-    'core'
+    'core',
+    'contactUs'
+    
 ]
 
 MIDDLEWARE = [
@@ -70,7 +72,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+        "NAME": os.path.join(BASE_DIR, "mbdb", "db.sqlite3"),
     }
 }
 
@@ -117,5 +119,14 @@ STRIPE_PUBLIC_KEY = 'pk_test_lX3r6OMjOU2yzFsNSHq6belT00EY82kZmH'
 STRIPE_SECRET_KEY = 'sk_test_tn0CTDaIJHUJyAqhsf39cfsC00LNjsqDnb'
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-ALLOWED_HOSTS = ['beliefpeace.com', 'www.beliefpeace.com', '89.116.20.188']
+# ALLOWED_HOSTS = ['beliefpeace.com', 'www.beliefpeace.com', '89.116.20.188']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.hostinger.com'  # Hostinger SMTP server
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'aman@beliefpeace.com'  # Your Hostinger email
+EMAIL_HOST_PASSWORD = 'Groot0)98765'  # Use your Hostinger email password
+DEFAULT_FROM_EMAIL = 'aman@beliefpeace.com'
+CONTACT_EMAIL = 'aman@beliefpeace.com'  # Or any email where contact form submissions go
